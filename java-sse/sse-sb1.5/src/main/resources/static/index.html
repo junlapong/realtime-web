@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE</title>
+</head>
+<body>
+
+    Server Send Event Message
+    <div id="app"></div>
+    <div id="user"></div>
+    <div id="message"></div>
+
+    <script>
+    const app = document.getElementById('app')
+    const user = document.getElementById('user')
+    const message = document.getElementById('message')
+
+    const source = new EventSource('/message-stream')
+    source.addEventListener('message', (ev) => {
+        console.log(ev)
+        //app.innerHTML += ev.data + "<br>"
+        app.innerHTML = ev.data
+    })
+    </script>
+
+</body>
+</html>
